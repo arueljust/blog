@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\V1\LoginController;
-use App\Http\Controllers\V1\LogoutController;
-use App\Http\Controllers\V1\RegisterController;
+use App\Http\Controllers\V1\UserController;
+use App\Http\Controllers\V1\CustomerController;
+use App\Http\Controllers\V1\Auth\LoginController;
+use App\Http\Controllers\V1\Auth\LogoutController;
+use App\Http\Controllers\V1\Auth\RegisterController;
+use App\Http\Controllers\V1\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +40,9 @@ Route::prefix('v1')->group(function () {
         Route::post('/customers', [CustomerController::class, 'store']);
         Route::put('/customers/{id}', [CustomerController::class, 'update']);
         Route::delete('/customers/{id}', [CustomerController::class, 'destroy']);
+        // category
+        Route::get('/categories', [CategoryController::class, 'getAllDataCategories']);
+        Route::get('/categories/{id}', [CategoryController::class, 'getCategoryId']);
+        Route::post('/categories', [CategoryController::class, 'store']);
     });
 });

@@ -107,7 +107,7 @@ return [
         // ],
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb+srv://root:<password>@cluster0.uw3nglc.mongodb.net/?retryWrites=true&w=majority'),
+            'dsn' => env('DB_URI', 'mongodb+srv://root:<password>@cluster0.uw3nglc.mongodb.net/test'),
             'database' => 'blog',
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD','root'),

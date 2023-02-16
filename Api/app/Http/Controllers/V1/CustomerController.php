@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V1;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Repositories\Customer\CustomerRepository;
+use App\Http\Controllers\Controller;
 use App\Services\Customer\CustomerService;
 
 class CustomerController extends Controller

@@ -43,4 +43,27 @@ class CategoryRepositoryImpl implements CategoryRepository
 
         return $data;
     }
+
+    public function update($data, $id)
+    {
+        $category = $this->categories->find($id);
+
+        $category->name = $data['name'];
+        $category->slug = $data['slug'];
+        $category->keywords = $data['keywords'];
+        $category->meta_desc = $data['meta_desc'];
+
+        $category->update();
+
+        return $data;
+    }
+
+    public function delete($id)
+    {
+        $category = $this->categories->find($id);
+
+        $category->delete();
+
+        return $category;
+    }
 }

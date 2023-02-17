@@ -60,4 +60,43 @@ class CategoryController extends Controller
 
         return response()->json($result, $res['status']);
     }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->only([
+            'name',
+            'slug',
+            'keywords',
+            'meta_desc',
+        ]);
+        $res = ['status' => 201];
+        try {
+            $result['data'] = $this->categoryService->updateData($data, $id);
+        } catch (\Throwable $th) {
+            $result = [
+                'status' => 500,
+                'message' => $th->getMessage()
+            ];
+        }
+
+        return response()->json($result,$res['status']);
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $result['data'] = $this->categoryService->deleteDataById($id);
+        } catch (\Throwable $th) {
+            $result = [
+                'status' => 500,
+                'message' => $th->getMessage()
+            ];
+        }
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'data berhasil dihapus!',
+            'cache' => $result
+        ]);
+    }
 }

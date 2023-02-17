@@ -42,7 +42,6 @@ class CategoryController extends Controller
     {
         $data = $request->only([
             'name',
-            'slug',
             'keywords',
             'meta_desc',
         ]);

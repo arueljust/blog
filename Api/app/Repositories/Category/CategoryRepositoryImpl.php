@@ -3,6 +3,7 @@
 namespace App\Repositories\Category;
 
 use App\Models\Categories;
+use Illuminate\Support\Str;
 
 class CategoryRepositoryImpl implements CategoryRepository
 {
@@ -35,7 +36,7 @@ class CategoryRepositoryImpl implements CategoryRepository
         $category = new $this->categories;
 
         $category->name = $data['name'];
-        $category->slug = $data['slug'];
+        $category->slug = Str::slug($data['name']);
         $category->keywords = $data['keywords'];
         $category->meta_desc = $data['meta_desc'];
 

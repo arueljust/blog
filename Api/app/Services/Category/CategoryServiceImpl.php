@@ -38,7 +38,6 @@ class CategoryServiceImpl implements CategoryService
     {
         $validateData = Validator::make($data, [
             'name' => 'required',
-            'slug' => 'required',
             'keywords' => 'required',
             'meta_desc' => 'required',
         ]);
@@ -56,7 +55,6 @@ class CategoryServiceImpl implements CategoryService
     {
         $validateData = Validator::make($data, [
             'name' => 'required',
-            'slug' => 'required',
             'keywords' => 'required',
             'meta_desc' => 'required',
         ]);
@@ -96,3 +94,5 @@ class CategoryServiceImpl implements CategoryService
         return $result;
     }
 }
+
+

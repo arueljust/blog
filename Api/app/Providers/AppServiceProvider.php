@@ -14,6 +14,10 @@ use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Category\CategoryRepositoryImpl;
 use App\Repositories\Customer\CustomerRepositoryImpl;
+use App\Repositories\Tag\TagRepository;
+use App\Repositories\Tag\TagRepositoryImpl;
+use App\Services\Tag\TagService;
+use App\Services\Tag\TagServiceImpl;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CustomerRepository::class, CustomerRepositoryImpl::class);
         $this->app->bind(CategoryService::class, CategoryServiceImpl::class);
         $this->app->bind(CategoryRepository::class, CategoryRepositoryImpl::class);
+        $this->app->bind(TagService::class, TagServiceImpl::class);
+        $this->app->bind(TagRepository::class, TagRepositoryImpl::class);
     }
 
     /**

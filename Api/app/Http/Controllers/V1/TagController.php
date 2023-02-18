@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers\V1;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Category\CategoryService;
+use App\Services\Tag\TagService;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
+    private $tagService;
 
-    private $categoryService;
-
-    public function __construct(CategoryService $categoryService)
+    public function __construct(TagService $tagService)
     {
-        $this->categoryService = $categoryService;
+        $this->tagService = $tagService;
     }
 
-    public function getAllDataCategories()
+    public function getAllDataTag()
     {
-        $data = $this->categoryService->getListCategory();
+        $data = $this->tagService->getListTag();
 
         return response()->json([
             'status' => 200,
@@ -27,13 +26,13 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function getCategoryId($id)
+    public function getTagId($id)
     {
-        $result = $this->categoryService->getId($id);
+        $result = $this->tagService->getId($id);
 
         return response()->json([
             'status' => 200,
-            'message' => "data berhasil didapat",
+            'message' => 'data berhasil didapat',
             'data' => $result
         ]);
     }
@@ -45,19 +44,17 @@ class CategoryController extends Controller
             'keywords',
             'meta_desc',
         ]);
-
         $res = ['status' => 201];
-
         try {
-            $result['data'] = $this->categoryService->saveData($data);
+            $result['data'] = $this->tagService->saveData($data);
         } catch (\Throwable $th) {
             $result = [
                 'status' => 500,
-                'error' => $th->getMessage()
+                'message' => $th->getMessage()
             ];
         }
 
-        return response()->json($result, $res['status']);
+        return response()->json($result);
     }
 
     public function update(Request $request, $id)
@@ -69,7 +66,7 @@ class CategoryController extends Controller
         ]);
         $res = ['status' => 201];
         try {
-            $result['data'] = $this->categoryService->updateData($data, $id);
+            $result['data'] = $this->tagService->updateData($data, $id);
         } catch (\Throwable $th) {
             $result = [
                 'status' => 500,
@@ -77,13 +74,13 @@ class CategoryController extends Controller
             ];
         }
 
-        return response()->json($result,$res['status']);
+        return response()->json($result);
     }
 
     public function destroy($id)
     {
         try {
-            $result['data'] = $this->categoryService->deleteDataById($id);
+            $result['data'] = $this->tagService->deleteDataById($id);
         } catch (\Throwable $th) {
             $result = [
                 'status' => 500,
@@ -91,10 +88,6 @@ class CategoryController extends Controller
             ];
         }
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'data berhasil dihapus!',
-            'cache' => $result
-        ]);
+        return response()->json($result);
     }
 }

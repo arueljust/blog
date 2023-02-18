@@ -50,7 +50,7 @@ class CategoryRepositoryImpl implements CategoryRepository
         $category = $this->categories->find($id);
 
         $category->name = $data['name'];
-        $category->slug = $data['slug'];
+        $category->slug = Str::slug($data['name']);
         $category->keywords = $data['keywords'];
         $category->meta_desc = $data['meta_desc'];
 

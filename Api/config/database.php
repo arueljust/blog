@@ -99,11 +99,11 @@ return [
         //     'host' => env('DB_HOST', '127.0.0.1'),
         //     'port' => env('DB_PORT', 27017),
         //     'database' => env('DB_DATABASE', 'blog'),
-        //     // 'username' => env('DB_USERNAME', 'root'),
-        //     // 'password' => env('DB_PASSWORD',''),
-        //     // 'options' => Array(
-        //     //     'database' => 'blog',
-        //     // ),
+            // 'username' => env('DB_USERNAME', 'root'),
+            // 'password' => env('DB_PASSWORD','root'),
+            // 'options' => Array(
+            //     'database' => 'blog',
+            // ),
         // ],
         'mongodb' => [
             'driver' => 'mongodb',

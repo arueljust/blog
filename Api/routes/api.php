@@ -7,6 +7,7 @@ use App\Http\Controllers\V1\Auth\LoginController;
 use App\Http\Controllers\V1\Auth\LogoutController;
 use App\Http\Controllers\V1\Auth\RegisterController;
 use App\Http\Controllers\V1\CategoryController;
+use App\Http\Controllers\V1\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,11 @@ Route::prefix('v1')->group(function () {
         Route::post('/categories', [CategoryController::class, 'store']);
         Route::put('/categories/{id}', [CategoryController::class, 'update']);
         Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
+        // tag
+        Route::get('/tags', [TagController::class, 'getAllDataTag']);
+        Route::get('/tags/{id}', [TagController::class, 'getTagId']);
+        Route::post('/tags', [TagController::class, 'store']);
+        Route::put('/tags/{id}', [TagController::class, 'update']);
+        Route::delete('/tags/{id}', [TagController::class, 'destroy']);
     });
 });

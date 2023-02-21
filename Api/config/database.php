@@ -94,24 +94,21 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
-        // 'mongodb' => [
-        //     'driver' => 'mongodb',
-        //     'host' => env('DB_HOST', '127.0.0.1'),
-        //     'port' => env('DB_PORT', 27017),
-        //     'database' => env('DB_DATABASE', 'blog'),
-            // 'username' => env('DB_USERNAME', 'root'),
-            // 'password' => env('DB_PASSWORD','root'),
-            // 'options' => Array(
-            //     'database' => 'blog',
-            // ),
-        // ],
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb+srv://root:<password>@cluster0.uw3nglc.mongodb.net/test'),
-            'database' => 'blog',
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD','root'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', 27017),
+            'database' => env('DB_DATABASE', 'blog'),
+            // 'username' => env('DB_USERNAME', 'root'),
+            // 'password' => env('DB_PASSWORD', 'root'),
         ],
+        // 'mongodb' => [
+        //     'driver' => 'mongodb',
+        //     'dsn' => env('DB_URI', 'mongodb+srv://root:<password>@cluster0.uw3nglc.mongodb.net/test'),
+        //     'database' => 'blog',
+        //     'username' => env('DB_USERNAME', 'root'),
+        //     'password' => env('DB_PASSWORD','root'),
+        // ],
 
     ],
 

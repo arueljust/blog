@@ -7,6 +7,7 @@ use App\Http\Controllers\V1\Auth\LoginController;
 use App\Http\Controllers\V1\Auth\LogoutController;
 use App\Http\Controllers\V1\Auth\RegisterController;
 use App\Http\Controllers\V1\CategoryController;
+use App\Http\Controllers\V1\PostController;
 use App\Http\Controllers\V1\TagController;
 
 /*
@@ -53,5 +54,14 @@ Route::prefix('v1')->group(function () {
         Route::post('/tags', [TagController::class, 'store']);
         Route::put('/tags/{id}', [TagController::class, 'update']);
         Route::delete('/tags/{id}', [TagController::class, 'destroy']);
+        // post
+        Route::get('/posts', [PostController::class, 'getAllDataPost']);
+        Route::get('/posts/{id}', [PostController::class, 'getPostId']);
+        Route::post('/posts', [PostController::class, 'store']);
+        Route::put('/posts/{id}', [PostController::class, 'update']);
+        Route::delete('/posts/{id}', [PostController::class, 'destroy']);
+        Route::get('/posts/trash',[PostController::class,'trash']);
+        Route::post('/posts/trash/{id}/restore',[PostController::class,'restore']);
+        Route::delete('/posts/{id}/delete-permanent',[PostController::class,'deletePermanent']);
     });
 });

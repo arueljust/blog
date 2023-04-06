@@ -39,20 +39,15 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->only([
-            'title',
-            'cover',
-            'desc',
-            'category',
-            'tags',
-            'keywords',
-            'meta_desc',
-        ]);
-
+        $data = $request->all();
         try {
-
+            $result = $this->postService->saveData($data);
         } catch (\Throwable $th) {
-            //throw $th;
+            $result = [
+                "status" => 500,
+                "message" => $th->getMessage()
+            ];
         }
+        return $result;
     }
 }

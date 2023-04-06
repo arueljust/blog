@@ -39,14 +39,9 @@ class TagController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->only([
-            'name',
-            'keywords',
-            'meta_desc',
-        ]);
-        $res = ['status' => 201];
+        $data = $request->all();
         try {
-            $result['data'] = $this->tagService->saveData($data);
+            $result = $this->tagService->saveData($data);
         } catch (\Throwable $th) {
             $result = [
                 'status' => 500,
@@ -54,7 +49,7 @@ class TagController extends Controller
             ];
         }
 
-        return response()->json($result);
+        return $result;
     }
 
     public function update(Request $request, $id)

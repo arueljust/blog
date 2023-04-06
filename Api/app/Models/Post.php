@@ -18,18 +18,5 @@ class Post extends Model
 
     protected $guarded = [];
 
-    public function category()
-    {
-        return $this->belongsTo(Categories::class);
-    }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, null, 'post_ids', 'tag_ids');
-    }
 }

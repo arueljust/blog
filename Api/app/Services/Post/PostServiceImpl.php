@@ -3,6 +3,7 @@
 namespace App\Services\Post;
 
 use App\Repositories\Post\PostRepository;
+use App\Repositories\Post\PostRepositoryImpl;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
 
@@ -35,10 +36,10 @@ class PostServiceImpl implements PostService
     {
         $validateData = Validator::make($data, [
             'title' => 'required|unique:posts,title',
-            'cover' => 'required',
             'desc' => 'required',
+            'cover' => 'required',
             'category' => 'required',
-            'tags' => 'array|required',
+            'tags' => 'required',
             'keywords' => 'required',
             'meta_desc' => 'required',
         ]);
@@ -48,6 +49,11 @@ class PostServiceImpl implements PostService
         }
 
         $result = $this->postRepository->save($data);
-        return $result;
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'data berhasil disimpan',
+            'data' => $result
+        ]);
     }
 }

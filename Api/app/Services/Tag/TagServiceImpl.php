@@ -49,7 +49,11 @@ class TagServiceImpl implements TagService
 
         $result = $this->tagRepository->save($data);
 
-        return $result;
+        return response()->json([
+            'status' => 200,
+            'message' => 'data berhasil ditambah',
+            'data' => $result
+        ]);
     }
 
     public function updateData($data, $id)
